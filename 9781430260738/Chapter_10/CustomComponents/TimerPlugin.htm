@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <link href="../../extjs/resources/css/ext-all.css" rel="stylesheet" type="text/css" />
+    <script src="../../extjs/ext-all.js" type="text/javascript"></script>
+    <script>
+        Ext.define("TimerPlugin", {
+            extend: "Ext.AbstractPlugin",
+            alias: "plugin.timerplugin",
+            limit: 10,
+            count: 0,
+            intervalId: null,
+            init: function (component) {
+                var me = this;
+                this.intervalId = setInterval(function () { me.timer(component); }, 1000);
+            },
+            timer: function (component) {
+                if (this.count != this.limit) {
+                    this.count += 1;
+                    component.setTitle("Time left : " + (this.limit - this.count) + " seconds");
+                }
+                if(this.count == this.limit) {
+                    component.disable();
+                    clearInterval(this.intervalId);
+                }
+            }
+        });
+        Ext.onReady(function () {
+            Ext.create("Ext.panel.Panel", {
+                title: "Timer",
+                html: "This is a panel with timer plugin",
+                plugins : [{ptype:"timerplugin"}],
+                renderTo : Ext.getBody()
+            });
+        });
+    </script>
+</head>
+<body>
+
+</body>
+</html>

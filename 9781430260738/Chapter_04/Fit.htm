@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <link href="../extjs/resources/css/ext-all.css" rel="stylesheet" type="text/css" />
+    <script src="../extjs/ext-all.js" type="text/javascript"></script>
+    <script>
+        Ext.onReady(function () {
+            Ext.create('Ext.panel.Panel', {
+                layout: "fit",
+                height: 200, width: 200,
+                title: "Fit layout panel",
+                items: [
+                    {
+                        xtype : "textfield",
+                        fieldLabel : "Email"
+                    },
+                    {
+                        xtype: "button",
+                        text: "Register"
+                    }
+                ],
+                renderTo : Ext.getBody()
+            });
+        });
+    </script>
+</head>
+<body>
+
+</body>
+</html>

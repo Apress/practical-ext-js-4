@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <link href="../extjs/resources/css/ext-all.css" rel="stylesheet" type="text/css" />
+    <script src="../extjs/ext-all.js" type="text/javascript"></script>
+    <script>
+        Ext.define("Country", {
+            extend : "Ext.data.Model",
+            fields : ["name","capital"]
+        });
+        var countryStore = Ext.create("Ext.data.Store", {
+            model: "Country",
+            listeners: {
+                load: function () {
+                    countryStore.getAt(3).set("name", "Kingdom of Denmark");
+                    countryStore.sync(); //invokes proxy's update method
+                    countryStore.add({ name: "Portugal", capital: "Lisbon" });
+                    countryStore.sync(); //invokes proxy's create method
+                    countryStore.removeAt(0);
+                    countryStore.sync(); //invokes proxy's destroy method
+                }
+            },
+            proxy: {
+                type: "ajax",
+                api: {
+                    create: '/countries/add',
+                    read: 'countries.txt',
+                    update: '/countries/update',
+                    destroy: '/countries/remove'
+                },
+                reader: {
+                    type: "json",
+                    root: "countriesInEurope"
+                }
+            }
+        });
+        countryStore.load();
+        
+    </script>
+</head>
+<body>
+
+</body>
+</html>

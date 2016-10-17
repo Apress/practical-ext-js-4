@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="extjs/ext-all.js" type="text/javascript"></script>
+<script>
+	Ext.define("DuraSoft.tech.extjs4.Book",{
+		statics : {
+			numberOfBooks: 0,
+			getNumberOfBooks: function(){
+				return this.numberOfBooks;
+			}
+		},
+		constructor : function(){
+			this.statics().numberOfBooks++;
+		}
+	});	
+	
+	Ext.create("DuraSoft.tech.extjs4.Book");
+	Ext.create("DuraSoft.tech.extjs4.Book");
+	console.log(DuraSoft.tech.extjs4.Book.getNumberOfBooks());
+</script>
+</head>
+<body>
+</body>
+</html>

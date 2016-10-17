@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <link href="../extjs/resources/css/ext-all.css" rel="stylesheet" type="text/css" />
+    <script src="../extjs/ext-all.js" type="text/javascript"></script>
+    <script>
+
+        Ext.onReady(function () {
+            var win = Ext.create("Ext.window.Window", {
+                title: "Find and Replace",
+                modal: true,
+                items: [
+                            {
+                                xtype: "textfield",
+                                fieldLabel: "Find what"
+                            }
+                ],
+                buttons: [
+                            {
+                                text: "Find next"
+                            },
+                            {
+                                text: "Cancel"
+                            }
+                ]
+            });
+            win.show();
+        });
+    </script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <link href="../extjs/resources/css/ext-all.css" rel="stylesheet" type="text/css" />
+    <script src="../extjs/ext-all.js" type="text/javascript"></script>
+    <script>
+      var store = Ext.create("Ext.data.Store", {
+            fields: ["sno", "value"],
+            pageSize : 50,
+            autoLoad : true,
+            proxy : {
+                type : "ajax",
+                url : "server.ashx",
+                reader : {
+                    type : "json",
+                    root : "output",
+                    totalProperty : "total"
+                }
+            }
+        });
+
+        Ext.onReady(function () {
+                Ext.create("Ext.grid.Panel", {
+                    store: store,
+                    title : "Paginated grid",
+                    height : 400,width:400,
+                    dockedItems: [{
+                        xtype: 'pagingtoolbar',
+                        store: store,   
+                        dock: 'bottom',
+                        displayInfo: true
+                    }],
+                    columns: [
+                                {
+                                    text: 'Serial No',
+                                    dataIndex: 'sno'
+                                },
+                                {
+                                    text: 'Value',
+                                    dataIndex: 'value',
+                                }                           ],
+                    renderTo: Ext.getBody()
+                });
+            }
+        );
+    </script>
+</head>
+<body>
+
+</body>
+</html>

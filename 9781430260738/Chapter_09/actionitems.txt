@@ -1,0 +1,9 @@
+﻿{
+	"actionitems" : [
+		{"sno":1,"item":"Planning group leads","officer":"Smith","status":"Open","createdby":"Allen","createddate":"06/12/2013"},
+		{"sno":2,"item":"Arrange group meeting ","officer":"Thomas","status":"Closed","createdby":"Thomas","createddate":"05/28/2013"},
+		{"sno":3,"item":"Confirm baseline requirements","officer":"Anderson","status":"Open","createdby":"Carter","createddate":"06/14/2013"},
+		{"sno":4,"item":"Amend proposed changes","officer":"Allen","status":"Waiting for Approval","createdby":"Yong","createddate":"06/27/2013"},
+		{"sno":5,"item":"Draft experimentation requests","officer":"Carter","status":"Closed","createdby":"Turner","createddate":"06/01/2013"}
+	]
+}

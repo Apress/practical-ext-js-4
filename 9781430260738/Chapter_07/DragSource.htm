@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <link href="../extjs/resources/css/ext-all.css" rel="stylesheet" type="text/css" />
+    <script src="../extjs/ext-all.js" type="text/javascript"></script>
+    <script>
+        Ext.onReady(function () {
+            Ext.create("Ext.panel.Panel", {
+                title: "Source panel",
+                height: 200, width: 250, padding: 20,
+                renderTo : Ext.getBody(),
+                items: [
+                    {
+                        xtype : "button",
+                        text : "Drag",margin:5,
+                        listeners : {
+                            render : function(src){
+                                Ext.create("Ext.dd.DragSource",src.getEl(),{
+                                    ddGroup : "A",
+                                    afterValidDrop : function(dropSrc){
+                                        var target = Ext.getCmp(dropSrc.id);
+                                        target.add(src);
+                                    } ,
+                                });
+                            }
+                        }
+                    }
+                ]
+            });
+            Ext.create("Ext.panel.Panel", {
+                title: "Destination panel",
+                height: 200, width: 250, padding: 20,
+                renderTo : Ext.getBody(),
+                listeners: {
+                    render: function (src) {
+                        Ext.create("Ext.dd.DDTarget",src.getEl(),"A");
+                    }
+                },
+            });
+    });
+    </script>
+</head>
+<body>
+
+</body>
+</html>

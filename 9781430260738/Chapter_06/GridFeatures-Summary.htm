@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <link href="../extjs/resources/css/ext-all.css" rel="stylesheet" type="text/css" />
+    <script src="../extjs/ext-all.js" type="text/javascript"></script>
+    <script src="../extjs/ux/RowExpander.js" type="text/javascript"></script>
+    <script>
+        var movieStore = Ext.create("Ext.data.Store", {
+            fields: ["title", "rent", "buy","description"],
+            data: [
+                    { title: "Forrest Gump", rent: 2.99,buy:6.99,description:"Tom Hanks gives an astonishing performance as Forrest, an everyman whose simple innocence comes to embody a generation."},
+                    { title: "Cast Away", rent: 3.99,buy:13.46,description:"Academy Award-winning filmmaker Robert Zemeckis and two-time Oscar winner Tom Hanks reunite to explore the blessings and heartache of fate and the survival of the human spirit. Tom Hanks gives one of the towering screen performances of all time as Chuck Noland, a FedEx systems engineer whose ruled-by-the-clock existence abruptly ..."},
+                    { title: "Apollo 13", rent: 3.99,buy:7.99,description:"A 'routine' space flight becomes a desperate battle to survive in this breathtaking adventure of courage and faith starring Tom Hanks, Kevin Bacon, Bill Paxton, Gary Sinise and Ed Harris."}
+            ]
+        });
+
+
+        Ext.onReady(function () {
+                Ext.create("Ext.grid.Panel", {
+                    store: movieStore,
+                    height: 350,
+                    title: "Tom Hanks collection",
+                    features: [
+                   {
+                       ftype: 'summary'
+                   }],
+                    columns: [
+                                {
+                                    text: 'Movie',
+                                    dataIndex: 'title',
+                                    summaryType: "count",
+                                    summaryRenderer: function (value) {
+                                        return "<b>Movie count: " + value + "</b>";
+                                    }
+
+                                },
+                                {
+                                    text: 'Rent',
+                                    dataIndex: 'rent',
+                                    summaryType: "average",
+                                    summaryRenderer: function (value) {
+                                        return "<b>Average rent: $" + Ext.Number.toFixed(value, 2) + "</b>";
+                                    }
+                                },
+                                {
+                                    text: 'Buy',
+                                    dataIndex: 'buy',
+                                    summaryType: "sum",
+                                    summaryRenderer: function (value) {
+                                        return "<b>Total : $" + Ext.Number.toFixed(value, 2) + "</b>";
+                                    }
+                                }
+                            ],
+                    renderTo: Ext.getBody()
+                });
+            }
+        );
+    </script>
+</head>
+<body>
+
+</body>
+</html>

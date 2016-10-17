@@ -1,0 +1,16 @@
+<html>
+	<head>
+		<script>
+			function Person(theName,theAge){
+				this.name = theName; //public variable
+				this.age = theAge;
+				this.eat = function(){
+					console.log(this.name + " is eating");
+				}
+			}
+			var p1 = new Person("Sam",23);
+			p1.eat(); //Prints Sam is eating
+			console.log(p1.age); // Prints 23
+		</script>
+	</head>
+</html>

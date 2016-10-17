@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <link href="../extjs/resources/css/ext-all.css" rel="stylesheet" type="text/css" />
+    <script src="../extjs/ext-all.js" type="text/javascript"></script>
+    <script>
+        Ext.onReady(function () {
+            Ext.create("Ext.form.Panel",
+            {
+			renderTo : Ext.getBody(),
+            title : "Controls",
+			items : [
+					{
+						xtype : "radiogroup",
+						fieldLabel : "Title",
+						vertical:true,columns:1,
+						items : [
+			                      {boxLabel:"Mr",name:"title"},
+        		                      {boxLabel:"Ms",name:"title"}
+						]
+					},
+					{
+	xtype : "textfield",
+	fieldLabel : "Name",
+	allowBlank : false,
+	maxLength : 50,
+	msgTarget : "side"
+},
+{
+     	xtype : "datefield",
+	fieldLabel : "Date of birth",
+	msgTarget : "side"
+},
+{
+  xtype : "textfield",
+  fieldLabel : "Blog",
+  vtype : "url"
+},
+
+
+					{
+					      xtype : "numberfield",
+					      fieldLabel : "Years of experience",
+					      minValue : 5,
+					      maxValue : 15
+					},
+{
+	xtype : "textarea",
+	fieldLabel : "Address",
+	validator : function(val){
+		if(val.indexOf("#") != -1 || val.indexOf(".") != -1)
+			return "Invalid characters like # or . in address";
+		return true;
+	 }
+},
+					{
+					      xtype : "button",
+					      text : "Submit"
+					}
+				],
+			});
+
+
+
+        });
+    </script>
+</head>
+<body>
+
+</body>
+</html>

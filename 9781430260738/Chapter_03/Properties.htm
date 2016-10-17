@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="../extjs/ext-all.js" type="text/javascript"></script>
+<script>
+	Ext.define("DuraSoft.tech.extjs4.Book",{
+		title : "",
+		price : -1,
+		constructor : function(title,price){
+			this.title = title;
+			this.price = price;
+		}
+	});
+	var xml = Ext.create("DuraSoft.tech.extjs4.Book","XML",12.00);
+	console.log(xml.title);
+	console.log(xml.price);
+</script>
+</head>
+<body>
+</body>
+</html>

@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <link href="../extjs/resources/css/ext-all.css" rel="stylesheet" type="text/css" />
+    <script src="../extjs/ext-all.js"></script>
+    <script>
+        Ext.onReady(function () {
+            var nameText = {
+                xtype : "textfield",
+                fieldLabel : "Name"
+            };
+            var submitButton = {
+                xtype : "button",
+                text : "Submit"
+            };
+            Ext.create("Ext.panel.Panel",{
+                renderTo : Ext.getBody(),
+                items : [
+                    nameText,submitButton
+                ]
+            });
+        });        
+    </script>
+</head>
+<body>
+</body>
+</html>

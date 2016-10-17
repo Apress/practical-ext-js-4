@@ -1,0 +1,17 @@
+<html>
+	<head>
+		<script>
+			var myBook = {
+				title : "Practical Ext JS4",
+				author:"Prabhu Sunderaraman",
+				publisher : "APress",
+				price : 49.99,
+				formats : ["e-book","paperback"],
+				order : function(){
+					console.log("Ordering " + this.title + " in Amazon");
+				}
+			};
+			myBook.order();
+		</script>
+	</head>
+</html>

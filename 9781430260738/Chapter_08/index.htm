@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="extjs/resources/css/ext-all.css" rel="stylesheet" type="text/css" />
+    <script src="../extjs/ext-all.js"></script>
+    <script>
+        Ext.onReady(function () {
+            Ext.create("Ext.panel.Panel", {
+                title: "Theme panel",
+                ui : "cool",
+                items: [
+                    { xtype:"textfield",fieldLabel:"First name" },
+                    { xtype : "button",text:"Submit"}
+                ],
+                renderTo: Ext.getBody()
+            });
+        });
+    </script>
+</head>
+<body>
+</body>
+</html>

@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <link href="../extjs/resources/css/ext-all.css" rel="stylesheet" type="text/css" />
+    <script src="../extjs/ext-all.js" type="text/javascript"></script>
+    <script>
+        Ext.define("City", {
+            extend: "Ext.data.Model",
+            fields: ["name"]
+        });
+        Ext.define("Country", {
+            extend: "Ext.data.Model",
+            fields: ["name"],
+            hasMany: [{ name: "cities", model: "City"}]
+        });
+        var countryStore = Ext.create("Ext.data.TreeStore", {
+            model: "Country",
+            autoLoad: true,
+            proxy: {
+                type: "ajax",
+                url: "countriestree.txt",
+                reader: {
+                    type: "json",
+                    root: "countries"
+                }
+            },
+            listeners: {
+                append: function (currentNode, newNode) {
+                    if (!newNode.isRoot()) {
+                        if (newNode.getDepth() == 1) {
+                            newNode.set("text", newNode.get("name"));
+                            for (var i = 0; i < newNode.cities().getCount(); i++) {
+                                var city = newNode.cities().getAt(i).get("name");
+                                var cityNode = newNode.copy();
+                                cityNode.set("text", city);
+                                cityNode.set("leaf", true);
+                                newNode.appendChild(cityNode);
+                            }
+                        }
+                    }
+                    else
+                        newNode.set("text", "Countries");
+                }
+            }
+        });
+        Ext.application({
+            launch: function () {
+                Ext.create('Ext.tree.Panel', {
+                    title: 'Countries', height: 400,
+                    store: countryStore,
+                    rootVisible: true,
+                    renderTo: Ext.getBody()
+                });
+                countryStore.load();
+                //console.log(countryStore);
+            }
+        });
+    </script>
+</head>
+<body>
+
+</body>
+</html>

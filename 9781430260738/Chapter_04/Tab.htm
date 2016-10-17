@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <link href="../extjs/resources/css/ext-all.css" rel="stylesheet" type="text/css" />
+    <script src="../extjs/ext-all.js" type="text/javascript"></script>
+    <script>
+        Ext.onReady(function () {
+            Ext.create('Ext.tab.Panel', {
+                renderTo: Ext.getBody(),
+                title: "Documentation",
+                plain: false,
+                height : 200,
+                tabPosition: "bottom",
+                items: [
+                            {
+                                title: 'Home',
+                                html : "Welcome to Ext JS 4"
+                            }, 
+                            {
+                                title: 'API',
+                                html : "API docs"
+                            }, 
+                            {
+                                title: 'Guides',
+                                html : "Standard guides"
+                            }
+                        ]
+            }); 
+        });
+    </script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <link href="../extjs/resources/css/ext-all.css" rel="stylesheet" type="text/css" />
+    <script src="../extjs/ext-all.js" type="text/javascript"></script>
+    <script>
+        var movieStore = Ext.create("Ext.data.Store", {
+            fields: ["title", "rent", "buy", "rating"],
+            groupField : "rating",
+            data: [
+                    { title: "Forrest Gump", rent: 2.99,buy:6.99,rating:"PG-13"},
+                    { title: "Cast Away", rent: 3.99,buy:13.46,rating:"PG-13"},
+                    { title: "Apollo 13", rent: 3.99, buy: 7.99, rating: "PG" },
+                    { title: "The Green Mile", rent: 1.99, buy: 9.99, rating: "R" },
+                    { title: "Sleepless in Seattle", rent: 1.99, buy: 11.97, rating: "PG" },
+                    { title: "Toy Story 3", rent: 1.99, buy: 14.99, rating: "G" },
+            ]
+        });
+
+
+        Ext.onReady(function () {
+                Ext.create("Ext.grid.Panel", {
+                    store: movieStore,
+                    height: 350,
+                    title: "Tom Hanks collection",
+                    features: [
+                       {
+                           ftype: 'grouping',
+                           groupHeaderTpl : "Rating: {name}",
+                           collapsible : false,
+                           showSummaryRow : true
+                       }
+                   ],
+                    columns: [
+                                {
+                                    text: 'Movie',
+                                    dataIndex: 'title'
+                                },
+                                {
+                                    text: 'Rent',
+                                    dataIndex: 'rent'
+                                },
+                                {
+                                    text: 'Buy',
+                                    dataIndex: 'buy'
+                                }
+                            ],
+                    renderTo: Ext.getBody()
+                });
+            }
+        );
+    </script>
+</head>
+<body>
+
+</body>
+</html>

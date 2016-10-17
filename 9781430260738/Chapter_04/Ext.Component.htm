@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <link href="../extjs/resources/css/ext-all.css" rel="stylesheet" type="text/css" />
+    <script src="../extjs/ext-all.js"></script>
+    <script>
+        Ext.onReady(function () {
+            var panel1 = Ext.create("Ext.panel.Panel", {
+                items: [
+                    Ext.create("Ext.Component", {
+                        html: "Raw Component",
+                        itemId: "rawcomp1"
+                    })
+                ],
+                renderTo: Ext.get("hellodiv")
+            });
+            console.log(panel1.getComponent("rawcomp1"));
+        });        
+    </script>
+</head>
+<body>
+    <div id="hellodiv"></div>
+</body>
+</html>

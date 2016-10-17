@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <link href="../extjs/resources/css/ext-all.css" rel="stylesheet" type="text/css" />
+    <script src="../extjs/ext-all.js" type="text/javascript"></script>
+    <script>
+        var countryStore = Ext.create("Ext.data.TreeStore", {
+            root: {
+                text: "Countries",
+                children: [
+                    { text: "USA", children: [{ text: "Houston", leaf: true }, { text: "Boston", leaf: true }, { text: "LA", leaf: true}] },
+                    { text: "UK", children: [{ text: "London", leaf: true }, { text: "Bristol", leaf: true }, { text: "Essex", leaf: true}] },
+                    { text: "India", children: [{ text: "Chennai", leaf: true }, { text: "Delhi", leaf: true }, { text: "Mumbai", leaf: true}] },
+                ]
+            }
+        });
+
+        Ext.onReady(function () {
+                Ext.create('Ext.tree.Panel', {
+                    title: 'Countries', height: 400,
+                    store: countryStore,
+                    rootVisible: true,
+                    renderTo: Ext.getBody()
+                });
+            }
+        );
+    </script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,91 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <link href="../extjs/resources/css/ext-all.css" rel="stylesheet" type="text/css" />
+    <script src="../extjs/ext-all.js" type="text/javascript"></script>
+    <script>
+        var movieStore = Ext.create("Ext.data.Store", {
+            fields: ["title", "rent", "buy",{name:"dvdReleaseDate",type:"date",format:"MM/dd/YYYY"},"bluerayFormat","wikipedia"],
+            data: [
+                    { title: "Forrest Gump", rent: 2.99,buy:6.99,dvdReleaseDate:"08/01/2001",bluerayFormat:true,wikipedia:"http://en.wikipedia.org/wiki/Forrest_Gump"},
+                    { title: "Cast Away", rent: 3.99,buy:13.46,dvdReleaseDate:"02/15/2004",bluerayFormat:false,wikipedia:"http://en.wikipedia.org/wiki/Cast_Away"},
+                    { title: "Apollo 13", rent: 3.99,buy:7.99,dvdReleaseDate:"12/23/2002",bluerayFormat:true,wikipedia:"http://en.wikipedia.org/wiki/Apollo_13_(film)"}
+            ]
+        });
+
+
+        Ext.onReady(function () {
+                Ext.create("Ext.grid.Panel", {
+                    store: movieStore,
+                    height : 150,
+                    title : "Tom Hanks collection",
+                    selType : "cellmodel",
+                    plugins : [
+                        {
+                            ptype : "cellediting",
+                            clicksToEdit : 2
+                        }
+                    ],
+                    listeners : {
+                        beforeedit : function(src,e){
+                            var record = e.record;
+                            console.log("beforeedit: " + record.get("buy"));
+                        },
+                        edit : function(src,e){
+                            var record = e.record;
+                            console.log("edit: " + record.get("buy"));
+                        },
+                        canceledit : function(src,e){
+                            var record = e.record;
+                            console.log("canceledit: " + record.get("buy"));
+                        },
+                        validateedit : function(src,e){
+                            var record = e.record;
+                            console.log("validateedit: " + record.get("buy"));
+                        },
+                    },
+                    columns: [
+                                {
+                                    text: 'Movie',
+                                    dataIndex: 'title',
+                                },
+                                {
+                                    text: 'Rent',
+                                    dataIndex: 'rent',
+                                },
+                                {
+                                    text: 'Buy',
+                                    dataIndex: 'buy',
+                                    editor : {
+                                        xtype : "numberfield",
+                                        step : 0.01
+                                    }
+                                },
+                                {
+                                    text: 'Blue-ray',
+                                    dataIndex: 'bluerayFormat',
+                                    xtype : 'booleancolumn',
+                                    trueText : "Available",
+                                    falseText : "Not available",
+                                    editor : {
+                                        xtype : "checkboxfield"
+                                    }
+                                },
+                                {
+                                    text: 'DVD release date',
+                                    dataIndex: 'dvdReleaseDate',
+                                    xtype : "datecolumn",
+                                    format : "M d, Y"
+                                }
+                              ],
+                    renderTo: Ext.getBody()
+                });
+            }
+        );
+    </script>
+</head>
+<body>
+
+</body>
+</html>

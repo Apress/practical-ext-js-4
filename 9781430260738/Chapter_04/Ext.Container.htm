@@ -1,0 +1,20 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <link href="../extjs/resources/css/ext-all.css" rel="stylesheet" type="text/css" />
+    <script src="../extjs/ext-all.js"></script>
+    <script>
+        Ext.onReady(function () {
+            var container1 = Ext.create("Ext.container.Container", {
+                html: "Raw Container",
+                renderTo: Ext.getBody()
+            });
+            var item1 = Ext.create("Ext.Component",{html:"Component"});
+            container1.add(item1);
+        });        
+    </script>
+</head>
+<body>
+</body>
+</html>

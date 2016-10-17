@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <link href="../extjs/resources/css/ext-all.css" rel="stylesheet" type="text/css" />
+    <script src="../extjs/ext-all.js" type="text/javascript"></script>
+    <script>
+        Ext.define("BookProxy", {
+            extend: "Ext.data.proxy.Rest",
+            alias: "proxy.bookproxy",
+            buildUrl: function (req) {
+                var originalUrl = this.callParent(arguments);
+                if (req.action == "read") {
+                    var urlParts = originalUrl.split("?");
+                    targetUrl = urlParts[0] + "/list?" + urlParts[1];
+                }
+                if (req.action == "create") {
+                    var urlParts = originalUrl.split("/");
+                    targetUrl = urlParts[0] + "/add/" + urlParts[1];
+                }
+                else if (req.action == "update") {
+                    var urlParts = originalUrl.split("/");
+                    targetUrl = urlParts[0] + "/update/" + urlParts[1];
+                }
+                else if (req.action == "destroy") {
+                    var urlParts = originalUrl.split("/");
+                    targetUrl = urlParts[0] + "/remove/" + urlParts[1];
+                }
+                return targetUrl;
+            }
+        });
+        Ext.define("Book", {
+        extend : "Ext.data.Model",
+        fields : ["id","title","author"],
+        proxy:{
+            type : "bookproxy" ,
+            url : "library" //YOU NEED TO HAVE SOMETHING RUNNING AT /library
+        }
+    });
+    </script>
+</head>
+<body>
+
+</body>
+</html>

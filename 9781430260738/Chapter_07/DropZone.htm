@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <style>
+     .dnd{
+         border-width:.1em;
+         border-style:double; 
+         margin-left:5px;
+         height:4em;
+         width:10em;
+     }
+    </style>
+    <link href="../extjs/resources/css/ext-all.css" rel="stylesheet" type="text/css" />
+    <script src="../extjs/ext-all.js" type="text/javascript"></script>
+    <script>
+        Ext.onReady(function () {
+            Ext.create("Ext.dd.DragZone", "zone1", {
+                getDragData: function (e) {
+                   var sourceElem = e.getTarget();
+                   var clonedSourceElem = sourceElem.cloneNode(true);
+                   clonedSourceElem.innerHTML = "Dragging " + clonedSourceElem.innerHTML;
+                   return {
+                        ddel: clonedSourceElem, 
+                        source: sourceElem,
+                        text : sourceElem.innerHTML
+                   };
+                },
+            });
+            Ext.create("Ext.dd.DropZone", "zone2", {
+                getTargetFromEvent: function (e) {
+                    //console.log(e.getTarget().id);
+                    if(e.getTarget().id != "zone2")
+                    return e.getTarget();
+                    return null;
+                },
+                onNodeDrop: function (target, dd, e, data) {
+                    console.log(target);
+                    target.innerHTML = data.text;
+                    return true;
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <div id="zone1">
+        <p>Item1</p>
+        <p>Item2</p>
+        <p>Item3</p>
+    </div>
+    <br /><hr /><br />
+    <div id="zone2" >
+        <p class="dnd">Drop here</p><br />
+        <p class="dnd">Drop here</p><br />
+        <p class="dnd">Drop here</p><br />
+    </div>
+    <hr />
+</body>
+</html>

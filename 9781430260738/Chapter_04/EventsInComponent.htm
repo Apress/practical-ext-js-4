@@ -1,0 +1,83 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <link href="../extjs/resources/css/ext-all.css" rel="stylesheet" type="text/css" />
+    <script src="../extjs/ext-all.js"></script>
+    <script>
+        Ext.onReady(function () {
+            var pnl = Ext.create("Ext.panel.Panel", {
+                        items: [
+                            Ext.create("Ext.Component", {
+                                html: "Raw Component",
+                                itemId : "rawcomp1",
+                                listeners: {
+                                    activate: function () {
+                                        console.log("activate")
+                                    },
+                                    added: function () {
+                                        console.log("added")
+                                    },
+                                    afterrender: function () {
+                                        console.log("afterrender")
+                                    },
+                                    beforeactivate: function () {
+                                        console.log("beforeactivate")
+                                    },
+                                    beforedeactivate: function () {
+                                        console.log("beforedeactivate")
+                                    },
+                                    beforerender: function () {
+                                        console.log("beforerender")
+                                    },
+                                    beforeshow: function () {
+                                        console.log("beforeshow")
+                                    },
+                                    beforedestroy: function () {
+                                        console.log("beforedestroy")
+                                    },
+                                    destroy: function () {
+                                        console.log("destroy")
+                                    },
+                                    render: function () {
+                                        console.log("render")
+                                    },
+                                    show: function () {
+                                        console.log("show")
+                                    },
+                                    beforehide: function () {
+                                        console.log("beforehide")
+                                    },
+                                    hide: function () {
+                                        console.log("hide")
+                                    },
+                                    enable: function () {
+                                        console.log("enable")
+                                    },
+                                    disable: function () {
+                                        console.log("disable")
+                                    },
+                                    removed: function () {
+                                        console.log("removed")
+                                    }
+                              }
+                          })
+                        ],
+                        renderTo: Ext.getBody()
+                    });
+                    console.log("******Calling disable")
+                    pnl.getComponent("rawcomp1").disable();
+                    console.log("******Calling enable")
+                    pnl.getComponent("rawcomp1").enable();
+                    console.log("******Calling hide")
+                    pnl.getComponent("rawcomp1").hide();
+                    console.log("******Calling show")
+                    pnl.getComponent("rawcomp1").show();
+                    console.log("******Calling destroy")
+                    pnl.getComponent("rawcomp1").destroy();
+        });        
+    </script>
+</head>
+<body>
+</body>
+</html>

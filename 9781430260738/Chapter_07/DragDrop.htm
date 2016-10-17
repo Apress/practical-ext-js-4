@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <link href="../extjs/resources/css/ext-all.css" rel="stylesheet" type="text/css" />
+    <script src="../extjs/ext-all.js" type="text/javascript"></script>
+    <script>
+        Ext.onReady(function () {
+            var ddItem1 = Ext.create("Ext.dd.DragDrop", "item1", "A", { isTarget: false });
+            ddItem1.startDrag = function () {
+                console.log("startDrag");
+            }
+            ddItem1.onDrag = function () {
+                console.log("onDrag");
+            }
+            ddItem1.onDragEnter = function () {
+                console.log("onDragEnter");
+            }
+            ddItem1.onDragOut = function () {
+                console.log("onDragOut");
+            }
+            ddItem1.onDragOver = function () {
+                console.log("onDragOver");
+            }
+            ddItem1.onDragDrop = function () {
+                console.log("onDragDrop");
+            }
+            ddItem1.endDrag = function () {
+             console.log("endDrag");
+            }
+            ddItem1.onInvalidDrop = function () {
+                console.log("onInvalidDrop");
+            }
+            var ddItem2 = Ext.create("Ext.dd.DragDrop", "item2", "A", {isTarget:true});
+});
+    </script>
+</head>
+<body>
+    <h5 id="item1">
+        Draggable Item
+    </h5>
+    <br /><br /><br /><br />
+    <div id="item2" style="border-width:.1em;border-style:double; height:130;width:30;">
+        Drop your items here
+    </div>
+</body>
+</html>

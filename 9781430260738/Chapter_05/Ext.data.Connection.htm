@@ -1,0 +1,23 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <link href="../extjs/resources/css/ext-all.css" rel="stylesheet" type="text/css" />
+    <script src="../extjs/ext-all.js" type="text/javascript"></script>
+    <script>
+        Ext.create("Ext.data.Connection").request(
+            Ext.create("Ext.data.Request",{
+                url: "books.txt",
+                success: function (xhr) {
+                    console.log(xhr.responseText);
+                },
+                failure: function (xhr) {
+                    console.log("Error: " + xhr.statusText);
+                }
+        }));
+    </script>
+</head>
+<body>
+
+</body>
+</html>

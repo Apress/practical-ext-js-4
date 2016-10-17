@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="../extjs/ext-all.js"></script>
+<script>
+	Ext.define("Employee",{
+		config : {
+			employeeid : "",
+			name : "",
+			salary : 0
+		},
+		constructor : function(cfg){
+			this.initConfig(cfg);
+		},
+		work : function(){
+			console.log(this.getName() + " is working");
+		}
+	});
+	Ext.define("Manager",{
+		extend : "Employee",
+		config : {
+			level : 1
+		},	
+		work : function(){
+			this.callParent();
+			console.log(this.getName() + " is in a meeting");
+		}
+	});
+	var mgr = Ext.create("Manager",{
+		employeeid:"DS123", name: "Sam", level: 4
+	});
+	mgr.work(); 
+</script>
+</head>
+<body>
+</body>
+</html>

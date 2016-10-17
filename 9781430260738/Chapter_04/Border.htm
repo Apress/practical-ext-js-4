@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <link href="../extjs/resources/css/ext-all.css" rel="stylesheet" type="text/css" />
+    <script src="../extjs/ext-all.js" type="text/javascript"></script>
+    <script>
+        Ext.onReady(function () {
+            Ext.create("Ext.panel.Panel", {
+                layout: "border", padding: 30, id: "main", height: 500, width: 400,
+                items: [
+					        	{
+					        	    xtype: "panel",
+					        	    html: "Top ",
+					        	    region: "north"
+					        	},
+					        	{
+					        	    xtype: "panel",
+					        	    html: "Main contents",
+					        	    region: "center"
+					        	},
+					        	{
+					        	    xtype: "panel",
+					        	    html: "Side bar",
+					        	    collapsible: false,
+					        	    split: true,
+					        	    region: "west"
+					        	}
+					        ],
+                renderTo: Ext.getBody()
+            });
+
+        });
+    </script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <link href="../extjs/resources/css/ext-all.css" rel="stylesheet" type="text/css" />
+    <script src="../extjs/ext-all.js" type="text/javascript"></script>
+    <script>
+        Ext.define("Country", {
+            extend: "Ext.data.Model",
+            fields: ["name", "capital"],
+            proxy: {
+                type : "localstorage",//"sessionstorage"
+                id : "name"
+            }
+        });
+        var countryStore = Ext.create("Ext.data.Store",{
+                model: "Country",
+                autoLoad: true
+        });
+        Ext.onReady(function () {
+                var india = Ext.create("Country", { name: "India", capital: "New Delhi" });
+                var us = Ext.create("Country", { name: "US", capital: "Washington" });
+                india.save();
+                us.save();
+                //countryStore.load();
+                countryStore.add({ name: "France", capital: "Paris" });
+                countryStore.sync();
+            }
+        );
+    </script>
+</head>
+<body>
+
+</body>
+</html>

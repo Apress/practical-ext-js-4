@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <link href="../extjs/resources/css/ext-all.css" rel="stylesheet" type="text/css" />
+    <script src="../extjs/ext-all.js" type="text/javascript"></script>
+    <script>
+        var store = Ext.create("Ext.data.Store", {
+            fields: ["name", "age"],
+            data: [
+                     { name: "Sam", age: 12 },
+                     { name: "Emily", age: 47 },
+                     { name: "Hannah", age: 38 },
+                     { name: "Lauren", age: 66 },
+            ]
+        });
+        Ext.onReady(function () {
+            Ext.create("Ext.grid.Panel", {
+                renderTo: Ext.getBody(),
+                store: store,
+                viewConfig: {
+                    plugins: {
+                        ptype: 'gridviewdragdrop',
+                        dragText: 'Drag to rearrange',
+                },
+                listeners: {
+                    beforedrop: function (node, data) {
+                        console.log(data.ddel);
+                        console.log("beforedrop");
+
+                    },
+                    drop: function (node, data) {
+                        console.log("drop");
+                        console.log(data.records);
+                    }
+                    }
+                },
+                
+                columns: [{ text: "Name", dataIndex: "name" }, { text: "Age", dataIndex: "age"}]
+            });
+        });
+    </script>
+</head>
+<body>
+</body>
+</html>

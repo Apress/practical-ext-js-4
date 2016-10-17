@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <link href="../extjs/resources/css/ext-all.css" rel="stylesheet" type="text/css" />
+    <script src="../extjs/ext-all.js" type="text/javascript"></script>
+    <script>
+        var movieStore = Ext.create("Ext.data.Store", {
+            fields: ["title", "rent", "buy"],
+            data: [
+                { title: "Forrest Gump", rent: 2.99, buy: 6.99 },
+                { title: "Cast Away", rent: 3.99, buy: 13.46 },
+                { title: "Apollo 13", rent: 3.99, buy: 7.99 }
+            ]
+        });
+        Ext.onReady(function(){
+            Ext.create("Ext.grid.Panel", {
+                store: movieStore,
+                title : "Tom Hanks collection",
+                renderTo : Ext.getBody(),
+                width : 350,
+                columns: [
+                    {
+                        text: 'Movie',
+                        dataIndex: 'title',
+                        resizable: false,
+                        enableColumnHide: false,
+                        renderer: Ext.util.Format.uppercase
+                    },
+                    {
+                        text: 'Rent',
+                        dataIndex: 'rent',
+                        sortable: false,
+                        renderer: Ext.util.Format.usMoney
+                    },
+                    {
+                        text: 'Buy',
+                        dataIndex: 'buy',
+                        renderer: function (value) {
+                            return "$" + value;
+                        }
+                    }
+                ]
+            });
+        });
+        
+    </script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <link href="../extjs/resources/css/ext-all.css" rel="stylesheet" type="text/css" />
+    <script src="../extjs/ext-all.js" type="text/javascript"></script>
+    <script>
+        Ext.onReady(function () {
+                        Ext.create('Ext.panel.Panel', {
+                title: 'Column',
+                width: 600, height: 200,
+                layout: 'column',
+                defaults : {margin : "10"},
+                items: [
+                    {
+                        title : "Folder List",
+                        html : "Folder List contents",
+                        columnWidth : 0.20
+                    },
+                    {
+                        title: "Inbox",
+                        html: "Inbox contents",
+                        columnWidth : 0.30
+                    },
+                    {
+                        html: "Mail contents",
+                        columnWidth: 0.50
+                    }
+                ],
+                renderTo: Ext.getBody()
+            });
+
+        });
+    </script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <link href="../extjs/resources/css/ext-all.css" rel="stylesheet" type="text/css" />
+    <script src="../extjs/ext-all.js" type="text/javascript"></script>
+    <script>
+        var bookStore = Ext.create("Ext.data.Store", {
+            fields: [
+                { name: "title", mapping: "Title" },
+                { name: "author", mapping: "Author" },
+                { name: "price", mapping: "Price", type: "number" }
+            ],
+            autoLoad: true,
+            listeners: {
+                load: function (store) {
+                    store.each(function (record) {
+                        console.log(record.get("title"));
+                    });
+                }
+            },
+            proxy: {
+                type: "ajax",
+                url: "books.xml",
+                reader: {
+                    type: "xml",
+                    record: "Book",
+                    root: "Books"
+                }
+            }
+        });
+    
+    </script>
+</head>
+<body>
+
+</body>
+</html>

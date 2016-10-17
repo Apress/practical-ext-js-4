@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <link href="../extjs/resources/css/ext-all.css" rel="stylesheet" type="text/css" />
+    <script src="../extjs/ext-all.js" type="text/javascript"></script>
+    <script>
+        Ext.define("Country", {
+            extend: "Ext.data.Model",
+            fields: ["name", "capital", "population"],
+            idProperty: "name",
+            proxy: {
+                type: "memory",
+                data: {
+                    country: {
+                        name: "France",
+                        capital: "Paris",
+                        population: 65436552
+                    }
+                },
+                reader: {
+                    type: "json",
+                    root: "country"
+                }
+            }
+        });
+        Country.load("France", {
+            success: function (record) {
+                console.log(record.get("capital")); //Prints Paris
+                console.log(record.get("population")); //Prints 65436552
+            }
+        });
+    </script>
+</head>
+<body>
+
+</body>
+</html>

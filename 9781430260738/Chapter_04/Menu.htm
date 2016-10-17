@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <link href="../extjs/resources/css/ext-all.css" rel="stylesheet" type="text/css" />
+    <script src="../extjs/ext-all.js" type="text/javascript"></script>
+    <script>
+
+        Ext.onReady(function () {
+            var menu = Ext.create('Ext.menu.Menu', {
+                items: [
+                        {
+                            text: 'Undo'
+                        },
+                        {
+                            text: 'Cut'
+                        },
+                        {
+                            text: 'Copy'
+                        },
+                        {
+                            text: "Paste"
+                        }
+                ]
+            });
+            menu.show();
+        });
+    </script>
+</head>
+<body>
+
+</body>
+</html>

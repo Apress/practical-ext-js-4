@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <link href="../extjs/resources/css/ext-all.css" rel="stylesheet" type="text/css" />
+    <script src="../extjs/ext-all.js"></script>
+    <script>
+        Ext.onReady(function () {
+            var container = Ext.create("Ext.container.Container", {
+                html: "Default Container",
+                listeners: {
+                    beforeadd: function () {
+                        console.log("beforeadd");
+                    },
+                    add: function () {
+                        console.log("add");
+                    },
+                    beforeremove: function () {
+                        console.log("beforeremove");
+                    },
+                    remove: function () {
+                        console.log("remove");
+                    }
+                }
+            });
+            console.log("***Adding comp1");
+            container.add({
+                xtype: "component", html: "Raw", id: "comp1"
+            });
+            console.log("***Removing comp1");
+            container.remove("comp1");
+        });        
+    </script>
+</head>
+<body>
+    <div id="hellodiv"></div>
+</body>
+</html>

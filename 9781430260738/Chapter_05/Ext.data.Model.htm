@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <link href="../extjs/resources/css/ext-all.css" rel="stylesheet" type="text/css" />
+    <script src="../extjs/ext-all.js" type="text/javascript"></script>
+    <script>
+    Ext.define("Country", {
+        extend: "Ext.data.Model",
+        fields : ["name","capital","population"]
+    });
+
+    Ext.create("Country", {
+        name: "France",
+        capital: "Paris",
+        population: 65436552
+    });
+    var fr = Ext.create("Country", {
+        name: "France",
+        population: 65436552
+    });
+    
+    console.log(fr.get("name"));
+    fr.set("capital", "Paris");
+    </script>
+</head>
+<body>
+
+</body>
+</html>

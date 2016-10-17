@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <link href="../extjs/resources/css/ext-all.css" rel="stylesheet" type="text/css" />
+    <script src="../extjs/ext-all.js" type="text/javascript"></script>
+    <script>
+        Ext.data.validations.priceRange = function (config, value) {
+            var max = config.max;
+            var min = config.min;
+            return value < max && value > min;
+        };
+        Ext.define("Book", {
+            extend: "Ext.data.Model",
+            fields: ["title", "author", "ISBN", "price"],
+            validations: [
+                { type: "presence", field: "title" },
+                { type: "length", field: "author", max: 20, min: 3 },
+                { type: "format", field: "ISBN",
+                    matcher: /ISBN(?:-13)?:?\x20*(?=.{17}$)97(?:8|9)([ -])\d{1,5}\1\d{1,7}\1\d{1,6}\1\d$/
+                },
+                { type: "inclusion", field: "price", list: ["$20", "$25", "$30", "$35"] },
+                {type:"priceRange", max:50,min:5,message:"Price must be between 5 and 50"}
+            ]
+        });
+        var b1 = Ext.create("Book", { title: "Practical XYZ", ISBN: "ISBN: 978-3-5028-4391-71", price: "$45" });
+        var errors = b1.validate();
+        errors.each(function (item) {
+            console.log(item.field + " " + item.message);
+        });
+    </script>
+</head>
+<body>
+
+</body>
+</html>

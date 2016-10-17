@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link href="../extjs/resources/css/ext-all.css" rel="stylesheet" type="text/css" />
+<script src="../extjs/ext-all.js" type="text/javascript"></script>
+<script>
+	Ext.onReady(function () {
+		Ext.create("Ext.Button",{
+			text : "Hello World",
+			handler : function(){
+				Ext.Msg.alert("You clicked the hello world button");
+			},		
+			renderTo : Ext.getBody()
+		});
+	});
+</script>
+</head>
+<body>
+</body>
+</html>

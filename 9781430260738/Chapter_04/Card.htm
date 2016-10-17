@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <link href="../extjs/resources/css/ext-all.css" rel="stylesheet" type="text/css" />
+    <script src="../extjs/ext-all.js" type="text/javascript"></script>
+    <script>
+    Ext.define("Screen1",{
+       extend : "Ext.panel.Panel",
+       xtype : "screen1",
+       title : "Screen 1",
+       items : [
+         {
+           xtype : "button",
+           text : "Go to Screen 2",
+           handler : function(){
+             Ext.getCmp("viewport").getLayout().setActiveItem(1);
+           }
+         }
+       ]
+});  
+
+Ext.define("Screen2",{
+   extend : "Ext.panel.Panel",
+   xtype : "screen2",
+   title : "Screen 2",
+   items : [
+     {
+       xtype : "button",
+       text : "Go to Screen 3",
+       handler : function(){
+         Ext.getCmp("viewport").getLayout().setActiveItem(2);
+       }
+     }
+   ]
+});  
+
+Ext.define("Screen3",{
+   extend : "Ext.panel.Panel",
+   xtype : "screen3",
+   title : "Screen 3"
+});  
+
+Ext.onReady(function(){
+   Ext.create("Ext.container.Viewport",{
+     layout : "card",padding:30,id:"viewport",
+     items : [
+       {
+         xtype : "screen1",
+         id : "screen1"
+       },
+       {
+         xtype : "screen2",
+         id : "screen2"
+       },
+       {
+         xtype : "screen3",
+         id : "screen3"
+       }
+     ],
+     renderTo : Ext.getBody()
+    });
+}
+);
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

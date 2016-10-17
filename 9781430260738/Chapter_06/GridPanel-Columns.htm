@@ -1,0 +1,99 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <link href="../extjs/resources/css/ext-all.css" rel="stylesheet" type="text/css" />
+    <script src="../extjs/ext-all.js" type="text/javascript"></script>
+    <script>
+       var movieStore = Ext.create("Ext.data.Store", {
+            fields: [
+                "title",
+                "rent",
+                "buy",
+                {name:"dvdReleaseDate",type:"date",format:"MM/dd/YYYY"},
+                "bluerayFormat",
+                "wikipedia"
+            ],
+            data: [
+                    {   title: "Forrest Gump", rent: 2.99, buy:6.99, dvdReleaseDate:"08/01/2001",
+                        bluerayFormat: true, wikipedia: "http://en.wikipedia.org/wiki/Forrest_Gump"
+                    },
+                    {   title: "Cast Away", rent: 3.99, buy:13.46, dvdReleaseDate:"02/15/2004",
+                        bluerayFormat: false, wikipedia: "http://en.wikipedia.org/wiki/Cast_Away"
+                    },
+                    {   title: "Apollo 13", rent: 3.99, buy:7.99, dvdReleaseDate:"12/23/2002",
+                        bluerayFormat: true, wikipedia: "http://en.wikipedia.org/wiki/Apollo_13_(film)"
+                    }
+                  ]
+            });
+        Ext.onReady(function(){
+            Ext.create("Ext.grid.Panel", {
+                store: movieStore,
+                title : "Tom Hanks collection",
+                renderTo : Ext.getBody(),
+                columns: [
+                    {xtype : "rownumberer"},
+                    {
+                        text: 'Movie',
+                        dataIndex: 'title',
+                    },
+                    {
+                        text: 'Rent',
+                        dataIndex: 'rent',
+                        xtype : "numbercolumn",
+                        format : "0.00"
+                    },
+                    {
+                        text: 'Buy',
+                        dataIndex: 'buy',
+                        xtype : "numbercolumn",
+                        format : "0.00"
+                    },
+                    {
+                        text : "Blue-ray",
+                        dataIndex : "bluerayFormat",
+                        xtype : 'booleancolumn',
+                        trueText : "Available",
+                        falseText : "Not available"
+                    },
+                    {
+                        text: 'DVD release date',
+                        dataIndex: 'dvdReleaseDate',
+                        xtype : "datecolumn",
+                        format : "M d, Y"
+                    },
+                    {
+                        text : "Wiki",
+                        xtype : "templatecolumn",
+                        tpl : "<a href='{wikipedia}' target='_blank'>Read</a>"
+                    },
+                    {
+                        text: 'Add',
+                        xtype : "actioncolumn",
+                        items : [
+                            {
+                                tooltip:"Edit",
+                                icon : "edit.jpg",
+                                handler : function(grid,rowNum,colNum){
+                                    //Edit logic
+                                }
+                            },
+                            {
+                                tooltip:"Delete",
+                                icon : "delete.jpg",
+                                handler : function(grid,rowNum,colNum){
+                                    //Delete logic
+                                }
+                            }
+                        ]
+                    }
+                ]
+            });
+        });
+        
+    </script>
+</head>
+<body>
+
+</body>
+</html>

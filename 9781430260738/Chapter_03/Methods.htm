@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="extjs/ext-all.js" type="text/javascript"></script>
+<script>
+	Ext.define("DuraSoft.tech.extjs4.Book",{
+		config : {
+			title : "", price: 0
+		},	
+		constructor : function(cfg){
+			this.initConfig(cfg);
+		},
+		read: function(){
+			console.log("Reading " + this.getTitle());
+		}
+	});	
+	var xml = Ext.create("DuraSoft.tech.extjs4.Book",{
+		title : "XML", price:12.00
+	});
+	xml.read(); //Prints Reading XML
+</script>
+</head>
+<body>
+</body>
+</html>

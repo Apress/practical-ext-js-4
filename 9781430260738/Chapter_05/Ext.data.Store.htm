@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <link href="../extjs/resources/css/ext-all.css" rel="stylesheet" type="text/css" />
+    <script src="../extjs/ext-all.js" type="text/javascript"></script>
+    <script>
+        Ext.define("BookStore", {
+            extend: "Ext.data.Store",
+            fields: ["title", "author", "price"]
+        });
+        var bookStore = Ext.create("BookStore");
+        bookStore.add({ title: "Zend Framework", author: "Zend", price: 49.99 });
+        bookStore.add({ title: "Beginning F#", author: "Robert Pickering", price: 44.99 });
+        bookStore.add({ title: "Pro Hadoop", author: "Jason Venner", price: 39.99 });
+        bookStore.each(function (book) {
+            console.log(book.get("title") + ", " + book.get("author"));
+        });
+        console.log("**SORT");
+        bookStore.sort([
+            { property: "price", direction: "DESC" },
+            { property: "title", direction: "ASC" }
+        ]);
+        bookStore.each(function (book) {
+            console.log(book.get("title") + ", " + book.get("author"));
+        });
+        console.log("**FILTER");
+        bookStore.filterBy(function (record) {
+            return record.get("price") > 40.00;
+        });
+        bookStore.each(function (book) {
+            console.log(book.get("title") + ", " + book.get("author"));
+        });
+    </script>
+</head>
+<body>
+
+</body>
+</html>

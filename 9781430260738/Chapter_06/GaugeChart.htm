@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <link href="../extjs/resources/css/ext-all.css" rel="stylesheet" type="text/css" />
+    <script src="../extjs/ext-all.js" type="text/javascript"></script>
+    <script>
+        Ext.define('Employee', {
+            extend: 'Ext.data.Model',
+            fields: ['name', 'yearsOfExperience']
+        });
+        var store = Ext.create('Ext.data.Store', {
+            model: 'Employee',
+            data: [
+                    { name: 'Sam', yearsOfExperience: 12 },
+                    { name: 'Ram', yearsOfExperience: 7 },
+                    { name: 'Kim', yearsOfExperience: 16 },
+                    { name: 'John', yearsOfExperience: 21 },
+                    { name: 'Mary', yearsOfExperience: 13 }
+            ]
+        });
+
+        Ext.onReady(function () {
+            Ext.create('Ext.chart.Chart', {
+                renderTo: Ext.getBody(),
+                width: 500,
+                height: 300,
+                store: store,
+                legend: {
+                    position : "right",
+                    labelColor : "#00F"
+                },
+                mask: true,
+                axes: [
+                                {
+                                    type: 'gauge',
+                                    position: 'gauge',
+                                    minimum: 2,
+                                    maximum: 30,
+                                    steps: 15,
+                                }
+    ],
+                series: [
+                                 {
+                                     type: 'gauge',
+                                     field: 'yearsOfExperience',
+                                     label : {
+                                        field : "name",
+                                        display: "middle",
+                                        contrast : true,
+                                        font : "20px"
+                                     }
+                                 }
+        ]
+            });
+
+        });
+        
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

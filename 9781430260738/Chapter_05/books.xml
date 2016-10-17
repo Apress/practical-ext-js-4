@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Books>
+  <Book>
+    <Title>Zend Framework</Title>
+    <Author>Zend</Author>
+    <Price>44.99</Price>
+  </Book>
+  <Book>
+    <Title>Beginning F#</Title>
+    <Author>Robert Pickering</Author>
+    <Price>49.99</Price>
+  </Book>
+  <Book>
+    <Title>Pro Hadoop</Title>
+    <Author>Jason Venner</Author>
+    <Price>39.99</Price>
+  </Book>
+</Books>

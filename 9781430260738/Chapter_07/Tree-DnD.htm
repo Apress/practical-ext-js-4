@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <link href="../extjs/resources/css/ext-all.css" rel="stylesheet" type="text/css" />
+    <script src="../extjs/ext-all.js" type="text/javascript"></script>
+    <script>
+        var countryStore = Ext.create("Ext.data.TreeStore", {
+            root: {
+                text: "Sessions",
+                children: [
+
+            { text: "Track-I", children:
+               [
+                { text: "Drag and Drop in Ext JS 4", leaf: true },
+                { text: "Unit testing JavaScript", leaf: true },
+                { text: "Functional Programming in Groovy", leaf: true }
+               ] },
+            { text: "Track-II", children:
+              [
+               { text: "Scala Tricks", leaf: true },
+               { text: "Concurrency in JVM", leaf: true }, 
+               { text: "DSL in Scala", leaf: true}] },
+            { text: "Track-III", children:
+            [
+                { text: "HTML5 animations", leaf: true },
+                { text: "Offline applications", leaf: true }, 
+                { text: "Web sockets", leaf: true}] },
+            ]
+            }
+        });
+
+        Ext.application({
+            launch: function () {
+                Ext.create('Ext.tree.Panel', {
+                    title: 'Conference', height: 400,
+                    store: countryStore,
+                    viewConfig: {
+                        plugins: { ptype: 'treeviewdragdrop',dragText:"Drag and drop" },
+                        listeners: {
+                            beforedrop: function (node, data,overModel) {
+                                var session = data.records[0];
+                                if (!session.get("leaf") || overModel.isRoot())
+                                    return false;
+                            }
+                        }
+                    },
+                    rootVisible: true,
+                    renderTo: Ext.getBody()
+                });
+            }
+        });
+    </script>
+</head>
+<body>
+
+</body>
+</html>

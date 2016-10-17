@@ -1,0 +1,1 @@
+Before you run the code samples, please extract the contents of the Ext JS 4.x.zip into the [extjs] folder.

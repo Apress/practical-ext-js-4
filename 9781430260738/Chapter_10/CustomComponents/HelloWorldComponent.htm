@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style>
+		.hw { color: red;}
+	</style>
+	<link rel="stylesheet" href="../../extjs/resources/css/ext-all.css">
+	<script src="../../extjs/ext-all.js"></script>
+	<script>
+	    Ext.define("HelloWorld", {
+	        xtype: "helloworld",
+	        extend: "Ext.Component",
+	        autoEl: {
+	            tag: "span",
+	            html: "Hello World"
+	        }
+	    });
+		Ext.onReady(function(){
+				Ext.create("Ext.panel.Panel",{
+					renderTo : Ext.getBody(),
+					items : [
+					        	{xtype : "helloworld"} 
+					        ]
+				});
+			}
+		);
+	</script>
+</head>
+<body>
+
+</body>
+</html>

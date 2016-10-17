@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="../extjs/ext-all.js"></script>
+<script>
+	Ext.define("Aquatic",{
+		swim : function(){
+			console.log("Swimming");
+		}
+	});
+	Ext.define("Terrestrial",{
+		walk : function(){
+			console.log("Walking");
+		}
+	});
+	Ext.define("Reptile",{
+		mixins : ["Aquatic","Terrestrial"]
+	});
+	
+	var reptile = Ext.create("Reptile");
+	reptile.swim();
+	reptile.walk();
+</script>
+</head>
+<body>
+</body>
+</html>

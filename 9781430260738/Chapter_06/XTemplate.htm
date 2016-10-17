@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <link href="../extjs/resources/css/ext-all.css" rel="stylesheet" type="text/css" />
+    <script src="../extjs/ext-all.js" type="text/javascript"></script>
+    <script>
+        
+        var countryStore = Ext.create('Ext.data.Store', {
+            fields: ["name","capital"],
+            data: [
+                    { name: 'India', capital: "New Delhi" },
+                    { name: "USA", capital: "Washington" },
+                    { name: "UK", capital: "London" }
+            ]
+        });
+
+        Ext.onReady(function () {
+            var tpl = Ext.create("Ext.XTemplate",
+                     '<tpl for=".">',
+                       '<tpl if="data.name == \'USA\'">',
+                         '<p style="text-decoration:underline">{data.name}, <i>{data.capital}</i></p><br/>',
+                         '<tpl else>',
+                            '<p>{data.name}, <i>{data.capital}</i></p><br/>',
+                       '</tpl>',
+                     '</tpl>');
+            Ext.create("Ext.panel.Panel", {
+                           title : "Countries", 
+                           html : tpl.apply(countryStore), //apply XTemplate with the data
+                           renderTo : Ext.getBody()
+            });
+        }
+        );
+        
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

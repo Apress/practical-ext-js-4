@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <link href="../extjs/resources/css/ext-all.css" rel="stylesheet" type="text/css" />
+    <script src="../extjs/ext-all.js" type="text/javascript"></script>
+    <script>
+    Ext.define("Continent", {
+            extend: "Ext.data.Model",
+            fields: ["name"]
+    });
+    Ext.define("City", {
+            extend: "Ext.data.Model",
+            fields: ["name"]
+    });
+    Ext.define("CountryDetails", {
+        extend: "Ext.data.Model",
+        fields: ["id","population"],
+    });
+    Ext.define("Country", {
+        extend: "Ext.data.Model",
+        idProperty : "name",
+        fields: ["name", "capital"],
+        hasMany: [{ name: "cities", model: "City"}],
+        hasOne: [{model:"CountryDetails"}],
+        belongsTo: [{ model: "Continent"}],
+        proxy : {
+            type : "memory",
+            data : {
+                country : {
+                name : "France",
+                capital : "Paris",
+                countrydetails : {
+                id : "cd101",
+                population : 65436552
+                },
+                cities : [
+                    {name:"Lyon"},{name:"Avignon"}
+                ],
+                continent : {
+                    name : "Europe"
+                }
+            }
+        },
+        reader : {
+            type : "json",
+            root : "country"
+        }
+    }
+});
+    Country.load("France",{
+        success : function(record){
+            var continent = record.getContinent();
+            console.log(continent.get("name"));
+            var countryDetails = record.getCountryDetails();
+            console.log(countryDetails.get("population"));
+            var cities = record.cities();
+            cities.each(function(city){
+                console.log(city.get("name"));
+            });
+        }
+    });
+    </script>
+</head>
+<body>
+
+</body>
+</html>

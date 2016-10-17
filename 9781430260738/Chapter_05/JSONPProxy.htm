@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <link href="../extjs/resources/css/ext-all.css" rel="stylesheet" type="text/css" />
+    <script src="../extjs/ext-all.js" type="text/javascript"></script>
+    <script>
+
+        var bookStore = Ext.create("Ext.data.Store", {
+            fields: ["name"],
+            autoLoad: true,
+            listeners: {
+                load: function (store, records) {
+                    console.log(store.getCount());
+                }
+            },
+            proxy: {
+                type: "jsonp",
+                url: "http://127.0.0.1:13135/ExtJS4Book/books.ashx",
+                reader: {
+                    type: "json",
+                    root: "books"
+                }
+            }
+        });
+    </script>
+</head>
+<body>
+
+</body>
+</html>

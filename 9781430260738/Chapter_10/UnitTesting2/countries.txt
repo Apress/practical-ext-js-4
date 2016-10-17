@@ -1,0 +1,8 @@
+{
+	"countries" : [
+						{"name":"India","capital":"New Delhi",continent:"Asia"},
+						{"name":"USA","capital":"Washington, D.C",continent:"North America"},
+						{"name":"France","capital":"Paris",continent:"Europe"},
+						{"name":"Brazil","capital":"Brasilia",continent:"South America"}
+				  ]
+}

@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <link href="../extjs/resources/css/ext-all.css" rel="stylesheet" type="text/css" />
+    <script src="../extjs/ext-all.js" type="text/javascript"></script>
+    <script>
+        var bookStore = Ext.create("Ext.data.Store", {
+            fields: ["isbn", "title", "author"],
+            autoLoad : true,
+            proxy: {
+                url: "books.txt",
+                type: "ajax",
+                reader: {
+                    type : "json",
+                    root : "books"
+                }
+            }
+        });
+        Ext.onReady(function () {
+                Ext.create("Ext.form.field.ComboBox", {
+                    fieldLabel: "Book",
+                    store: bookStore,
+                    displayField: "title",
+                    valueField: "isbn",
+                    multiSelect: true,
+                    delimiter: ";",
+                    editable: false,
+                    queryMode : "local",
+                    listeners: {
+                        select: function (src, records) {
+                            console.log(records);
+                        }
+                    },
+                    typeAhead: true,
+                    typeAheadDelay : 100,
+                    renderTo: Ext.getBody()
+                });
+            });
+    </script>
+</head>
+<body>
+
+</body>
+</html>

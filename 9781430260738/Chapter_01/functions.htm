@@ -1,0 +1,15 @@
+<html>
+	<head>
+		<script>
+			eat();
+			function eat(){ 
+				console.log("Eating"); 
+			}
+			function work(arg){
+				arg();
+			}
+			work(eat);
+			work(function(){console.log("Coding");});
+		</script>
+	</head>
+</html>

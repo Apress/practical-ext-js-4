@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <link href="../extjs/resources/css/ext-all.css" rel="stylesheet" type="text/css" />
+    <script src="../extjs/ext-all.js" type="text/javascript"></script>
+    <script>
+        Ext.onReady(function () {
+            Ext.create("Ext.panel.Panel", {
+                height: 300, width: 300,
+                title: "Accordion layout ",
+                layout: {
+                    type : "accordion",
+                    multi : true
+                },
+                items: [
+		                 {
+		                     title: "Inbox",
+                             html : "Inbox contents"
+                         },
+                         {
+                             title: "Outbox",
+                             html: "Outbox contents"
+                         },
+                         {
+                             title: "Sent Items",
+                             html: "Sent Items"
+                         }
+            ],
+                renderTo: Ext.getBody()
+            });
+
+
+
+        });
+    </script>
+</head>
+<body>
+
+</body>
+</html>

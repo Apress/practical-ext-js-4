@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <link href="../extjs/resources/css/ext-all.css" rel="stylesheet" type="text/css" />
+    <script src="../extjs/ext-all.js" type="text/javascript"></script>
+    <script>
+        Ext.onReady(function () {
+            Ext.create("Ext.panel.Panel", {
+                renderTo: Ext.getBody(),
+                height: 200,
+                width : 700,
+                title: "Panel with a toolbar",
+                html : "This is an example to use a toolbar",
+                dockedItems: [
+                    {
+                        xtype: "toolbar",
+                        dock: "bottom",
+                        items: [
+                                    {
+                                        xtype: "tbtext",
+                                        text: "Item: 19"
+                                    },
+                                    "-",
+                                    {
+                                        xtype: "tbtext",
+                                        text: "English (United States)"
+                                    },
+                                    " ",
+                                    {
+                                        xtype : "combo",
+                                        fieldLabel : "Go to",
+                                        labelAlign : "right",
+                                        //store : null
+                                    },
+                                    "->",
+                                    {
+                                        text: "Print",
+                                    },
+                                    " ",
+                                    {
+                                        text: "Outline",
+                                    }
+                                ]
+                    }
+
+                ]
+            });
+        });
+    </script>
+</head>
+<body>
+
+</body>
+</html>

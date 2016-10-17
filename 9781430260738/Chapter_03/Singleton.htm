@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="../extjs/ext-all.js"></script>
+<script>
+	Ext.define("Company", {
+		singleton : true,
+		config: {
+			title: "Ace Inc.,",
+		},
+		getNumberOfEmployees: function () {
+			return 154;
+		}
+	});
+	
+	console.log(Company.title);
+	console.log(Company.getNumberOfEmployees());
+</script>
+</head>
+<body>
+</body>
+</html>

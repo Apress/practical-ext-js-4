@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style>
+		.hw { color: red;}
+	</style>
+	<link rel="stylesheet" href="../../extjs/resources/css/ext-all.css">
+	<script src="../../extjs/ext-all.js"></script>
+	<script>
+	    Ext.define("Link", {
+	        xtype: "link",
+	        extend: "Ext.Component",
+	        tpl: '<a href="{url}">{text}</a>',
+	        initComponent: function () {
+	            this.data = {
+	                text: this.text,
+	                url: this.url
+	            };
+	            this.addEvents("go");
+	            this.callParent(arguments);
+	        },
+	        onRender: function () {
+	            this.callParent(arguments);
+	            this.mon(this.el, "click", function () {
+	                this.fireEvent("go");
+	            }, this);
+	        }
+	    });
+	    Ext.onReady(function () {
+	        Ext.create("Ext.panel.Panel", {
+                renderTo : Ext.getBody(),
+                items: [
+                    {
+                        xtype: "link",
+                        url: " http://www.apress.com ",
+                        text: "Apress Inc",
+                        listeners : {
+                            go : function(){
+                                alert("You clicked the link");
+                            }
+                        }
+                    }
+                ]
+            });
+	    });
+	</script>
+</head>
+<body>
+</body>
+</html>

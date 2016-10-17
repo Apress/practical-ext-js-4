@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="../extjs/ext-all.js"></script>
+<script>
+	var Book = new Ext.Class({
+		config: {
+			title: "",
+			price: 5
+		},
+		constructor: function (cfg) {
+			this.initConfig(cfg);
+		},		
+		read: function () {
+			console.log("Reading " + this.getTitle());
+		}
+	});
+	var ajax = Ext.create("Book", { title: "AJAX",price:12.00 });
+	ajax.read();
+</script>
+</head>
+<body>
+</body>
+</html>

@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <link href="../extjs/resources/css/ext-all.css" rel="stylesheet" type="text/css" />
+    <script src="../extjs/ext-all.js" type="text/javascript"></script>
+    <script>
+       Ext.define("Book", {
+            extend : "Ext.data.Model",
+            fields : ["id","title","author"],
+            proxy:{
+                type : "rest",
+                url : "library"//YOU NEED TO HAVE A RESTful SERVICE AT /library
+            }
+        });
+        var bookStore = Ext.create("Ext.data.Store",{
+            model : "Book",
+        });
+        
+    </script>
+</head>
+<body>
+
+</body>
+</html>
